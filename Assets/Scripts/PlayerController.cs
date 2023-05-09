@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 	Animator ghostAnim;
 
 	public float speed;
+	public static bool isCapture = false;
 	private void Awake()
 	{
 		rb = GetComponent<Rigidbody2D>();
@@ -54,7 +55,12 @@ public class PlayerController : MonoBehaviour
     {
 		if (collision.gameObject.CompareTag("Host"))
 		{
+			isCapture = true;
 			StartCoroutine(Capture());
+		}
+		else
+		{
+			isCapture = false;
 		}
     }
 
@@ -63,6 +69,8 @@ public class PlayerController : MonoBehaviour
 		ghostAnim.SetBool("isCapture",true);
 		yield return new WaitForSeconds(1f);
         gameObject.transform.SetParent(parentHost);
+		yield return new WaitForSeconds(1f);
+		gameObject.SetActive(false);
     }
     #endregion
 }
