@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
 
 	IEnumerator Capture()
 	{
-		
+		ghostAnim.SetBool("isCapture",true);
 		yield return new WaitForSeconds(1f);
         gameObject.transform.SetParent(parentHost);
     }
