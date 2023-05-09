@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Host
   layers:
   - Default
   - TransparentFX
@@ -41,6 +42,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Ground
+  - name: tiles
+    uniqueID: 1542667227
+    locked: 0
+  - name: host
     uniqueID: 965931425
     locked: 0

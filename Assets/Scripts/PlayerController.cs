@@ -5,11 +5,15 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 	Rigidbody2D rb;
+	Transform parentHost;
+	Animator ghostAnim;
 
 	public float speed;
 	private void Awake()
 	{
 		rb = GetComponent<Rigidbody2D>();
+		ghostAnim = GetComponent<Animator>();
+		parentHost = GameObject.FindWithTag("Host").transform;
 	}
 
 	private void FixedUpdate()
@@ -43,5 +47,22 @@ public class PlayerController : MonoBehaviour
 			transform.Translate(Vector2.down*speed*Time.deltaTime);
 		}
 	}
-	#endregion
+    #endregion
+
+    #region Ghost Capture Host
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+		if (collision.gameObject.CompareTag("Host"))
+		{
+			StartCoroutine(Capture());
+		}
+    }
+
+	IEnumerator Capture()
+	{
+		
+		yield return new WaitForSeconds(1f);
+        gameObject.transform.SetParent(parentHost);
+    }
+    #endregion
 }
