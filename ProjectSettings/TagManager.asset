@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Host
+  - OpenDoor
   layers:
   - Default
   - TransparentFX
@@ -44,6 +45,9 @@ TagManager:
     locked: 0
   - name: tiles
     uniqueID: 1542667227
+    locked: 0
+  - name: events
+    uniqueID: 3262522925
     locked: 0
   - name: host
     uniqueID: 965931425

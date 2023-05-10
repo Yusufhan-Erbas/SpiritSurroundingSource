@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HostController : MonoBehaviour
 {
@@ -75,6 +76,16 @@ public class HostController : MonoBehaviour
 		else if(Input.GetKey(KeyCode.A))
 		{
 			transform.localScale = new Vector2(-1f, 1f);
+		}
+	}
+	#endregion
+
+	#region Level Up
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (collision.gameObject.CompareTag("OpenDoor"))
+		{
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 		}
 	}
 	#endregion

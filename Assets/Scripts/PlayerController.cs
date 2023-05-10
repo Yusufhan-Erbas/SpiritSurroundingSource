@@ -1,20 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
 	Rigidbody2D rb;
 	Transform parentHost;
 	Animator ghostAnim;
+	[SerializeField]
+	Text scoreText;
 
 	public float speed;
 	public static bool isCapture = false;
+	int score = 0;
 	private void Awake()
 	{
 		rb = GetComponent<Rigidbody2D>();
 		ghostAnim = GetComponent<Animator>();
 		parentHost = GameObject.FindWithTag("Host").transform;
+	}
+
+	private void Start()
+	{
+		PlayerPrefs.SetString("Score",score.ToString());
+		PlayerPrefs.Save();
+
+		scoreText.text ="SCORE "+PlayerPrefs.GetString("Score");
 	}
 
 	private void FixedUpdate()
