@@ -8,6 +8,7 @@ public class HostController : MonoBehaviour
 	Animator hostAnim;
 	public float speed = 20f;
 	bool isCaptureStart = false;
+	bool isWalking=false;
 	private void Awake()
 	{
 		rb = GetComponent<Rigidbody2D>();
@@ -39,14 +40,19 @@ public class HostController : MonoBehaviour
 			{
 				if (Input.GetKey(KeyCode.D))
 				{
-					hostAnim.SetBool("isWalk",true);
+					isWalking = true;
 					transform.Translate(Vector2.right * speed * Time.deltaTime);
 				}
 				else if (Input.GetKey(KeyCode.A))
 				{
-					hostAnim.SetBool("isWalk", true);
+					isWalking = true;					
 					transform.Translate(Vector2.left * speed * Time.deltaTime);
 				}
+				else
+				{
+					isWalking = false;
+				}
+				hostAnim.SetBool("isWalk", isWalking);
 			}
 		}
 		IEnumerator HostCaptured()
