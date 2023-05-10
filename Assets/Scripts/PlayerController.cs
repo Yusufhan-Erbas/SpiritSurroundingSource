@@ -85,4 +85,11 @@ public class PlayerController : MonoBehaviour
 		gameObject.SetActive(false);
     }
     #endregion
+
+    #region Ghost Second Form
+	void Evolve()
+	{
+
+	}
+    #endregion
 }

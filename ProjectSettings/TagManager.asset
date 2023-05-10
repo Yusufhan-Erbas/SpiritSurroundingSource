@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Host
   - OpenDoor
+  - Ladder
   layers:
   - Default
   - TransparentFX
@@ -48,6 +49,12 @@ TagManager:
     locked: 0
   - name: events
     uniqueID: 3262522925
+    locked: 0
+  - name: Ladder
+    uniqueID: 3676406947
+    locked: 0
+  - name: Enemy
+    uniqueID: 4053339409
     locked: 0
   - name: host
     uniqueID: 965931425

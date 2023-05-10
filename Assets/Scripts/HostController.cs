@@ -20,6 +20,7 @@ public class HostController : MonoBehaviour
 	{
 		HostMove();
 		HostTurn();
+		//ClimbToLadder();
 	}
 
 	#region Host Move Controller
@@ -88,5 +89,35 @@ public class HostController : MonoBehaviour
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 		}
 	}
-	#endregion
+    #endregion
+
+    #region Climb to ladder
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+		if (collision.gameObject.CompareTag("Ladder"))
+		{
+            ClimbToLadder();
+        }
+		
+    }
+
+
+    void ClimbToLadder()
+	{
+		if (!PlayerController.isCapture)
+		{
+			return;
+		}
+		if (Input.GetKey(KeyCode.W))
+		{
+			rb.gravityScale = 0;
+            transform.Translate(Vector2.up * speed * Time.deltaTime);
+        }
+		else if(Input.GetKey(KeyCode.S))
+		{
+			rb.gravityScale = 0;
+            transform.Translate(Vector2.down * speed * Time.deltaTime);
+        }
+    }
+    #endregion
 }
