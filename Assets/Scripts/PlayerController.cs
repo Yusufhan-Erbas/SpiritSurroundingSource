@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
 	Animator ghostAnim;
 	[SerializeField]
 	Text scoreText;
+	[SerializeField]
+	GameObject restartPanel;
 
 	public float speed;
 	public static bool isCapture = false;
@@ -23,12 +25,19 @@ public class PlayerController : MonoBehaviour
 
 	private void Start()
 	{
-		PlayerPrefs.SetString("Score",score.ToString());
+		PlayerPrefs.SetString("Score", score.ToString());
 		PlayerPrefs.Save();
 
-		scoreText.text ="SCORE "+PlayerPrefs.GetString("Score");
+		scoreText.text = "SCORE " + PlayerPrefs.GetString("Score");
 	}
 
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			RestartGame();
+		}
+	}
 	private void FixedUpdate()
 	{
 		MoveHorizontal();
@@ -41,7 +50,7 @@ public class PlayerController : MonoBehaviour
 	{
 		if (Input.GetKey(KeyCode.D))
 		{
-			transform.Translate(Vector2.right*speed*Time.deltaTime);
+			transform.Translate(Vector2.right * speed * Time.deltaTime);
 		}
 		else if (Input.GetKey(KeyCode.A))
 		{
@@ -57,14 +66,14 @@ public class PlayerController : MonoBehaviour
 		}
 		else if (Input.GetKey(KeyCode.S))
 		{
-			transform.Translate(Vector2.down*speed*Time.deltaTime);
+			transform.Translate(Vector2.down * speed * Time.deltaTime);
 		}
 	}
-    #endregion
+	#endregion
 
-    #region Ghost Capture Host
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
+	#region Ghost Capture Host
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
 		if (collision.gameObject.CompareTag("Host"))
 		{
 			isCapture = true;
@@ -74,22 +83,60 @@ public class PlayerController : MonoBehaviour
 		{
 			isCapture = false;
 		}
-    }
+	}
 
 	IEnumerator Capture()
 	{
-		ghostAnim.SetBool("isCapture",true);
+		ghostAnim.SetBool("isCapture", true);
 		yield return new WaitForSeconds(1f);
-        gameObject.transform.SetParent(parentHost);
+		gameObject.transform.SetParent(parentHost);
 		yield return new WaitForSeconds(1f);
 		gameObject.SetActive(false);
-    }
-    #endregion
+	}
+	#endregion
 
-    #region Ghost Second Form
+	#region Ghost Second Form
 	void Evolve()
 	{
 
 	}
-    #endregion
+	#endregion
+
+	#region Restart Game
+	void RestartGame()
+	{
+		if (GameManager.isRestart == false ? GameManager.isRestart = true : GameManager.isRestart = false) ;
+		if (GameManager.isRestart)
+		{
+			StartCoroutine(PanelGrowAnim());
+		}
+		else if (!GameManager.isRestart)
+		{
+			StartCoroutine(PanelReduceAnim());
+		}
+		IEnumerator PanelGrowAnim()
+		{
+			float increase = 0.05f;
+			restartPanel.SetActive(true);
+			for (int i = 0; i < 20; i++)
+			{
+				yield return new WaitForSeconds(0.05f);
+				restartPanel.gameObject.transform.localScale = new Vector2((0f + increase), (0f + increase));
+				increase += 0.05f;
+			}
+		}
+		IEnumerator PanelReduceAnim()
+		{
+			float reduce = 0.05f;
+			for (int i = 0; i < 20; i++)
+			{
+				yield return new WaitForSeconds(0.05f);
+				restartPanel.gameObject.transform.localScale = new Vector2((1f - reduce), (1f - reduce));
+				reduce += 0.05f;
+			}
+			restartPanel.SetActive(false);
+
+		}
+	}
+	#endregion
 }
