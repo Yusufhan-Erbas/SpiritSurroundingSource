@@ -118,6 +118,7 @@ public class PlayerController : MonoBehaviour
 		{
 			float increase = 0.05f;
 			restartPanel.SetActive(true);
+			restartPanel.gameObject.transform.localScale = new Vector2(0f,0f);
 			for (int i = 0; i < 20; i++)
 			{
 				yield return new WaitForSeconds(0.05f);
