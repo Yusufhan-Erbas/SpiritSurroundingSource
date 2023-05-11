@@ -20,7 +20,6 @@ public class HostController : MonoBehaviour
 	{
 		HostMove();
 		HostTurn();
-		//ClimbToLadder();
 	}
 
 	#region Host Move Controller
@@ -119,5 +118,12 @@ public class HostController : MonoBehaviour
             transform.Translate(Vector2.down * speed * Time.deltaTime);
         }
     }
-    #endregion
+	#endregion
+
+	#region OpenTheDoor 
+	void OpenDoor()
+	{
+
+	}
+	#endregion
 }

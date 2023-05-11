@@ -8,6 +8,7 @@ TagManager:
   - OpenDoor
   - Ladder
   - RestartPanel
+  - ClosedDoor
   layers:
   - Default
   - TransparentFX
@@ -62,4 +63,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3839678251
+    locked: 0
+  - name: Key
+    uniqueID: 887573117
     locked: 0
