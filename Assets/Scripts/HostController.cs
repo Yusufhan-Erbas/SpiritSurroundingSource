@@ -10,6 +10,7 @@ public class HostController : MonoBehaviour
 	public float speed = 20f;
 	bool isCaptureStart = false;
 	bool isWalking=false;
+	bool isClimb = false;
 	private void Awake()
 	{
 		rb = GetComponent<Rigidbody2D>();
@@ -96,7 +97,15 @@ public class HostController : MonoBehaviour
 		if (collision.gameObject.CompareTag("Ladder"))
 		{
             ClimbToLadder();
+			isClimb = true;
+			hostAnim.SetBool("isClimbing", isClimb);
         }
+		else
+		{
+			isClimb = false;
+			hostAnim.SetBool("isClimbing", isClimb);
+			rb.gravityScale = 1;
+		}
 		
     }
 

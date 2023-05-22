@@ -7,11 +7,6 @@ public class GameManager : MonoBehaviour
 	
    public static bool  isRestart = false;
 
-	private void Awake()
-	{
-		
-	}
-
 	public void RestartGame()
 	{
 		isRestart = true;

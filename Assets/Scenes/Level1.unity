@@ -2591,7 +2591,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0026310235, y: -0.01771152}
+  m_Offset: {x: 0.0026310235, y: -0.02925095}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2602,7 +2602,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.30839935, y: 1.5062435}
+  m_Size: {x: 0.30839935, y: 1.4831645}
   m_EdgeRadius: 0
 --- !u!1 &1586229925
 GameObject:
@@ -3726,7 +3726,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4461823444442405279, guid: ee59e31fe5974324bb00d69879a70916, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.15
+      value: -3.1
       objectReference: {fileID: 0}
     - target: {fileID: 4461823444442405279, guid: ee59e31fe5974324bb00d69879a70916, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3760,9 +3760,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4462840390046450925, guid: ee59e31fe5974324bb00d69879a70916, type: 3}
+      propertyPath: m_TagString
+      value: KeyClosed
+      objectReference: {fileID: 0}
     - target: {fileID: 4462887838322042911, guid: ee59e31fe5974324bb00d69879a70916, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4462887838322042911, guid: ee59e31fe5974324bb00d69879a70916, type: 3}
+      propertyPath: m_TagString
+      value: KeyOpen
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee59e31fe5974324bb00d69879a70916, type: 3}
@@ -3820,6 +3828,18 @@ PrefabInstance:
     - target: {fileID: 5053557892519012358, guid: 513eaaea5cc030847abb4f2b6802266b, type: 3}
       propertyPath: m_Name
       value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 5055246771448735550, guid: 513eaaea5cc030847abb4f2b6802266b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5055246771448735550, guid: 513eaaea5cc030847abb4f2b6802266b, type: 3}
+      propertyPath: m_TagString
+      value: ClosedDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 5055277735762893879, guid: 513eaaea5cc030847abb4f2b6802266b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 513eaaea5cc030847abb4f2b6802266b, type: 3}
@@ -3901,7 +3921,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7425217737077263493, guid: 0c66b471d934b964c914039cae1a08b9, type: 3}
       propertyPath: m_UsedByEffector
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7425217737077263495, guid: 0c66b471d934b964c914039cae1a08b9, type: 3}
       propertyPath: m_RootOrder

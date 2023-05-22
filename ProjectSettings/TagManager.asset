@@ -9,6 +9,8 @@ TagManager:
   - Ladder
   - RestartPanel
   - ClosedDoor
+  - KeyOpen
+  - KeyClosed
   layers:
   - Default
   - TransparentFX
