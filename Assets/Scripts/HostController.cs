@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class HostController : MonoBehaviour
 {
+	[SerializeField]
+	GameObject keyOpen, keyClosed, openedDoor, closedDoor;
 	Rigidbody2D rb;
 	Animator hostAnim;
 	public float speed = 20f;
 	bool isCaptureStart = false;
-	bool isWalking=false;
+	bool isWalking = false;
 	bool isClimb = false;
 	private void Awake()
 	{
@@ -38,7 +40,7 @@ public class HostController : MonoBehaviour
 				StartCoroutine(HostCaptured());
 				return;
 			}
-			else if(isCaptureStart)
+			else if (isCaptureStart)
 			{
 				if (Input.GetKey(KeyCode.D))
 				{
@@ -47,7 +49,7 @@ public class HostController : MonoBehaviour
 				}
 				else if (Input.GetKey(KeyCode.A))
 				{
-					isWalking = true;					
+					isWalking = true;
 					transform.Translate(Vector2.left * speed * Time.deltaTime);
 				}
 				else
@@ -61,9 +63,9 @@ public class HostController : MonoBehaviour
 		{
 			yield return new WaitForSeconds(2f);
 			isCaptureStart = true;
-		
+
 		}
-	
+
 	}
 	#endregion
 
@@ -74,7 +76,7 @@ public class HostController : MonoBehaviour
 		{
 			transform.localScale = new Vector2(1f, 1f);
 		}
-		else if(Input.GetKey(KeyCode.A))
+		else if (Input.GetKey(KeyCode.A))
 		{
 			transform.localScale = new Vector2(-1f, 1f);
 		}
@@ -84,33 +86,40 @@ public class HostController : MonoBehaviour
 	#region Level Up
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
+		if (collision.gameObject.CompareTag("KeyClosed"))
+		{
+			keyClosed.SetActive(false);
+			closedDoor.SetActive(false);
+			keyOpen.SetActive(true);
+			openedDoor.SetActive(true);
+		}
 		if (collision.gameObject.CompareTag("OpenDoor"))
 		{
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 		}
 	}
-    #endregion
+	#endregion
 
-    #region Climb to ladder
-    private void OnTriggerStay2D(Collider2D collision)
-    {
+	#region Climb to ladder
+	private void OnTriggerStay2D(Collider2D collision)
+	{
 		if (collision.gameObject.CompareTag("Ladder"))
 		{
-            ClimbToLadder();
+			ClimbToLadder();
 			isClimb = true;
 			hostAnim.SetBool("isClimbing", isClimb);
-        }
+		}
 		else
 		{
 			isClimb = false;
 			hostAnim.SetBool("isClimbing", isClimb);
 			rb.gravityScale = 1;
 		}
-		
-    }
+
+	}
 
 
-    void ClimbToLadder()
+	void ClimbToLadder()
 	{
 		if (!PlayerController.isCapture)
 		{
@@ -119,14 +128,14 @@ public class HostController : MonoBehaviour
 		if (Input.GetKey(KeyCode.W))
 		{
 			rb.gravityScale = 0;
-            transform.Translate(Vector2.up * speed * Time.deltaTime);
-        }
-		else if(Input.GetKey(KeyCode.S))
+			transform.Translate(Vector2.up * speed * Time.deltaTime);
+		}
+		else if (Input.GetKey(KeyCode.S))
 		{
 			rb.gravityScale = 0;
-            transform.Translate(Vector2.down * speed * Time.deltaTime);
-        }
-    }
+			transform.Translate(Vector2.down * speed * Time.deltaTime);
+		}
+	}
 	#endregion
 
 	#region OpenTheDoor 
