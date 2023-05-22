@@ -20,7 +20,7 @@ public class HostController : MonoBehaviour
 	}
 
 	private void FixedUpdate()
-	{
+	{		
 		HostMove();
 		HostTurn();
 	}
@@ -94,8 +94,9 @@ public class HostController : MonoBehaviour
 			openedDoor.SetActive(true);
 		}
 		if (collision.gameObject.CompareTag("OpenDoor"))
-		{
+		{			
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+			PlayerController.isCapture = false;
 		}
 	}
 	#endregion
