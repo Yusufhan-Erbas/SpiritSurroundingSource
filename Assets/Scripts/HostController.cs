@@ -86,17 +86,18 @@ public class HostController : MonoBehaviour
 	#region Level Up
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
+		//Condition for open key
 		if (collision.gameObject.CompareTag("KeyClosed"))
 		{
-			keyClosed.SetActive(false);
-			closedDoor.SetActive(false);
-			keyOpen.SetActive(true);
-			openedDoor.SetActive(true);
+			keyClosed.SetActive(false);//Closed Key unvisible
+			closedDoor.SetActive(false);//Closed door unvisible
+			keyOpen.SetActive(true);//Opened key visible
+			openedDoor.SetActive(true);//Opened door visible
 		}
 		if (collision.gameObject.CompareTag("OpenDoor"))
 		{			
-			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-			PlayerController.isCapture = false;
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);//Level Up.
+			PlayerController.isCapture = false;//Each level host capturing are reset.
 		}
 	}
 	#endregion

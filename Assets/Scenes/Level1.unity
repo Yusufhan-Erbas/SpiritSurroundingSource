@@ -3713,6 +3713,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7317222520351735622, guid: 6c05bb3fbc41dcd4cb463239b520bd9f, type: 3}
+      propertyPath: restartPanel
+      value: 
+      objectReference: {fileID: 2122765490}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c05bb3fbc41dcd4cb463239b520bd9f, type: 3}
 --- !u!1001 &4461823443978397842
@@ -3878,7 +3882,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5055246771448735550, guid: 513eaaea5cc030847abb4f2b6802266b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5055246771448735550, guid: 513eaaea5cc030847abb4f2b6802266b, type: 3}
       propertyPath: m_TagString
@@ -3886,7 +3890,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5055277735762893879, guid: 513eaaea5cc030847abb4f2b6802266b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 513eaaea5cc030847abb4f2b6802266b, type: 3}
