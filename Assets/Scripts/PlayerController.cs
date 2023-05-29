@@ -9,9 +9,7 @@ public class PlayerController : MonoBehaviour
 	Transform parentHost;
 	Animator ghostAnim;
 	[SerializeField]
-	Text scoreText;
-	[SerializeField]
-	GameObject restartPanel;
+	Text scoreText;	
 
 	public float speed;
 	public static bool isCapture = false;
@@ -31,13 +29,7 @@ public class PlayerController : MonoBehaviour
 		scoreText.text = "SCORE " + PlayerPrefs.GetString("Score");
 	}
 
-	private void Update()
-	{
-		if (Input.GetKeyDown(KeyCode.Escape))
-		{
-			RestartGame();
-		}
-	}
+	
 	private void FixedUpdate()
 	{
 		MoveHorizontal();
@@ -102,42 +94,5 @@ public class PlayerController : MonoBehaviour
 	}
 	#endregion
 
-	#region Restart Game
-	void RestartGame()
-	{
-		if (GameManager.isRestart == false ? GameManager.isRestart = true : GameManager.isRestart = false) ;
-		if (GameManager.isRestart)
-		{
-			StartCoroutine(PanelGrowAnim());
-		}
-		else if (!GameManager.isRestart)
-		{
-			StartCoroutine(PanelReduceAnim());
-		}
-		IEnumerator PanelGrowAnim()
-		{
-			float increase = 0.05f;
-			restartPanel.SetActive(true);
-			restartPanel.gameObject.transform.localScale = new Vector2(0f,0f);
-			for (int i = 0; i < 20; i++)
-			{
-				yield return new WaitForSeconds(0.05f);
-				restartPanel.gameObject.transform.localScale = new Vector2((0f + increase), (0f + increase));
-				increase += 0.05f;
-			}
-		}
-		IEnumerator PanelReduceAnim()
-		{
-			float reduce = 0.05f;
-			for (int i = 0; i < 20; i++)
-			{
-				yield return new WaitForSeconds(0.05f);
-				restartPanel.gameObject.transform.localScale = new Vector2((1f - reduce), (1f - reduce));
-				reduce += 0.05f;
-			}
-			restartPanel.SetActive(false);
-
-		}
-	}
-	#endregion
+	
 }

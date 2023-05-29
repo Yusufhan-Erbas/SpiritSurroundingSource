@@ -36,8 +36,7 @@ public class GameManager : MonoBehaviour
 
 	#region Restart Panel
 	void RestartPanel()
-	{
-		if (isRestart == false ? isRestart = true : isRestart = false) ;
+	{		
 		if (!isRestart)
 		{
 			StartCoroutine(PanelGrowAnim());
