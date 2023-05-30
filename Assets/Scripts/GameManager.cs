@@ -31,7 +31,8 @@ public class GameManager : MonoBehaviour
 
 	public void CloseWindow()
 	{
-		isRestart = false;
+		isRestart = true;
+		RestartPanel();
 	}
 
 	#region Restart Panel
